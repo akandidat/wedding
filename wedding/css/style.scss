@@ -1,0 +1,214 @@
+@use 'sass:math';
+// 1. RESPONSIVE BREAKPOINTS
+$maxWidth: 1400px;
+$minWidth: 390px;
+
+// Responsive adaptive value mixin
+@mixin adaptiveValue($property, $desktopValue, $mobileValue, $unit: px) {
+    $addSize: #{$desktopValue - $mobileValue};
+    $widthDiff: math.div($maxWidth - $minWidth, 1px); // Convert to unitless number
+
+    #{$property}: calc(#{$mobileValue}#{$unit} + #{$addSize} * ((100vw - #{$minWidth}) / #{$widthDiff}));
+
+    @media (min-width: #{$maxWidth}) {
+        #{$property}: #{$desktopValue}#{$unit};
+    }
+}
+
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100vh;
+    background: #111111;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-image: var(--preloader-bg-mobile, none);
+    background-size: cover;
+    background-position: center;
+
+    .logo {
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition: 2s;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 100%;
+        transform: translate(-50%, -50%);
+        filter: blur(6px);
+    }
+
+    .sm-opener_content {
+        z-index: 2;
+        cursor: pointer;
+        max-width: 500px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 100%;
+        transform: translate(-50%, -50%);
+
+        .sm-envelope_back {
+            width: 100%;
+            height: 563px;
+            background: url(../img/envelope_back.webp) 50% 50% no-repeat;
+            background-size: cover;
+            position: relative;
+            transform: rotate(-10deg) translate(-30px, -50px);
+            overflow: hidden;
+
+            .sm-envelope_card {
+                width: 300px;
+                height: 200px;
+                position: absolute;
+                z-index: 2;
+                background-size: contain;
+                background: url(../img/envelope_text.webp) 50% 50% no-repeat;
+                left: 50%;
+                transform: translateX(-50%);
+                top: 100%;
+                transition: top .5s;
+
+                .sm-envelope_card-text {
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    gap: 10px;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    @include adaptiveValue(font-size, 30, 14)
+                }
+
+
+            }
+
+            .sm-envelope_front {
+                width: 100%;
+                height: 356px;
+                background: url(../img/envcover.webp) 50% 50% no-repeat;
+                position: absolute;
+                z-index: 3;
+                bottom: 0;
+                background-size: contain;
+
+                .sm-intro_wrapper {
+                    width: 100%;
+                    height: 140px;
+                    position: absolute;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    bottom: 20px;
+                    object-position: center;
+                    object-fit: contain;
+
+                    .sm-intro_string-1 {
+                        font-size: 20px;
+                        font-family: "Alegreya", serif;
+                        text-align: center;
+                        letter-spacing: 2px;
+                        text-transform: uppercase;
+                    }
+
+                    .sm-intro_string-2 {
+                        font-size: 40px;
+                        line-height: 30px;
+                        font-family: "Great Vibes", cursive;
+                        text-align: center;
+                    }
+                }
+            }
+
+
+        }
+
+        @media (max-width: 500px) {
+            max-width: 300px;
+            transform: translate(-50%, -35%);
+
+            .sm-envelope_back {
+                transform: rotate(-10deg) translate(0, -50px);
+                height: 344px;
+
+                .sm-envelope_card {
+                    width: 190px;
+                    height: 150px;
+                }
+
+                .sm-envelope_front {
+                    height: 218px;
+
+                    .sm-intro_wrapper {
+                        bottom: 0;
+                        height: 125px;
+                        transform: translateX(-50%) scale(.7);
+                    }
+                }
+            }
+        }
+    }
+
+    &.active {
+        .sm-envelope_card {
+            top: 30%;
+        }
+    }
+}
+
+.sm-opener_content-bottom {
+    font-family: "Cormorant", serif;
+}
+
+.sm-opener_content-button {
+    position: relative;
+
+    .icon-icons8-forefinger-50 {
+        &::before {
+            font-size: 50px;
+            content: "\e928";
+        }
+    }
+
+    .pulse-circle {
+        content: "";
+        position: absolute;
+        width: 13px;
+        height: 13px;
+        border: 2px solid #000000;
+        border-radius: 50%;
+        top: -3px;
+        left: 13px;
+        animation: circleAnim 1s 0s infinite;
+        animation-timing-function:
+            ease-in-out;
+    }
+
+    @keyframes circleAnim {
+
+        0% {
+            opacity: 0;
+        }
+
+        50% {
+            transform: scale(1.7);
+            opacity: .3;
+        }
+
+        100% {
+            transform: scale(2.2);
+            opacity: 0;
+        }
+    }
+}
