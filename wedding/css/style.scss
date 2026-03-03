@@ -15,6 +15,31 @@ $minWidth: 390px;
     }
 }
 
+@mixin bgProps($size: cover, $repeat: no-repeat, $position: center) {
+    background-size: $size;
+    background-repeat: $repeat;
+    background-position: $position;
+}
+
+@mixin responsive-image($width: 16, $height: 10, $fit: cover) {
+    $aspect-ratio: $width / $height;
+    position: relative;
+    width: 100%;
+    padding-top: calc(100% / $aspect-ratio);
+    overflow: hidden;
+
+    img,
+    picture,
+    video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: $fit;
+    }
+}
+
 .loading-screen {
     position: fixed;
     top: 0;
@@ -161,8 +186,10 @@ $minWidth: 390px;
     }
 
     &.active {
-        .sm-envelope_card {
-            top: 30%;
+        .sm-opener_content {
+            .sm-envelope_card {
+                top: 30%;
+            }
         }
     }
 }
@@ -210,5 +237,66 @@ $minWidth: 390px;
             transform: scale(2.2);
             opacity: 0;
         }
+    }
+}
+
+.section-hero {
+    @include adaptiveValue(padding-block, 90, 90);
+    background-image: url(../img/hero-bg.png);
+    @include bgProps(cover, no-repeat, center);
+
+    .section-hero__content {
+        display: flex;
+        flex-direction: column;
+        gap: 180px;
+        align-items: center;
+
+        h2 {
+            color: #313131;
+            text-transform: uppercase;
+            font-family: "Playfair Display", serif;
+            font-size: 40px;
+        }
+
+        .section-hero__content-date {
+            display: flex;
+            flex-direction: column;
+            color: #313131;
+            font-family: "Cormorant", serif;
+            font-size: 80px;
+            line-height: 111%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #313131;
+            text-transform: uppercase;
+            font-family: "Viaoda Libre", serif;
+            font-size: 55px;
+        }
+    }
+}
+
+.photo-card {
+    display: flex;
+    width: 300px;
+    height: 350px;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #FFFFFF;
+    padding-inline: 30px;
+    padding-block: 30px;
+
+    .photo-card__image {
+        .photo-card__image-inner {
+            @include responsive-image(1, 1, cover);
+        }
+    }
+
+    h3 {
+        font-family: "RocknRoll One", sans-serif;
+        font-size: 15px;
+        color: #313131;
+         line-height: 111%;
     }
 }

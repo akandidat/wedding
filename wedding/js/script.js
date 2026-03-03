@@ -8,5 +8,5 @@ loading_screen.addEventListener('click', function (e) {
         this.classList.remove('active');
         // Опционально: удаляем обработчик (если элемент может быть показан снова)
         // this.removeEventListener('click', arguments.callee);
-    }, 3000);
+    }, 1000);
 }) 
