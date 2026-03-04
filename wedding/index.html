@@ -9,12 +9,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&family=Cormorant:ital,wght@0,300..700;1,300..700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=RocknRoll+One&family=Viaoda+Libre&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&family=Cormorant:ital,wght@0,300..700;1,300..700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=RocknRoll+One&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=Viaoda+Libre&display=swap"
         rel="stylesheet">
 
     <!-- Bootstrap 5.3 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
 
     <!-- App styles -->
     <link rel="stylesheet" href="icomoon/style.css" />
@@ -22,8 +23,8 @@
 </head>
 
 <body>
-    <!-- <div class="loading-screen">
-        <img src="img/1.png" alt="zxc" class="logo" />
+    <div class="loading-screen">
+        <img src="img/preloader.png" alt="zxc" class="logo" />
         <div class="sm-opener_content">
             <div class="sm-envelope_back">
                 <div class="sm-envelope_card">
@@ -46,45 +47,320 @@
             </div>
         </div>
 
-    </div> -->
-    <section class="section section-hero">
-        <div class="container">
-            <div class="row d-flex justify-content-center">
-                <div class="col-12 position-relative">
-                    <div class="section-hero__content">
-                        <h2>wedding day</h2>
-                        <div class="section-hero__content-date">
-                            <span>18</span>
-                            <span>07</span>
-                            <span>26</span>
+    </div>
+    <main>
+        <section class="section section-hero _p-bg _paper mb-5">
+            <div class="container">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-12 position-relative overflow-hidden">
+                        <div class="section-hero__content">
+                            <div class="section-hero__content-top">
+                                <h2>wedding day</h2>
+                                <div class="section-hero__content-date">
+                                    <span>18</span>
+                                    <span>07</span>
+                                    <span>26</span>
+                                </div>
+
+                            </div>
+                            <div class="section-hero__cards">
+                                <div class="photo-card">
+                                    <div class="photo-card__image">
+                                        <div class="photo-card__image-inner">
+                                            <img src="./img/card.png" alt="">
+                                        </div>
+                                    </div>
+                                    <h3>- интересно , кто будет моим мужем, когда я вырасту?</h3>
+                                </div>
+                                <div class="photo-card _rotate">
+                                    <div class="photo-card__image">
+                                        <div class="photo-card__image-inner">
+                                            <img src="./img/card2.png" alt="">
+                                        </div>
+                                    </div>
+                                    <h3>- я! 🩷</h3>
+                                </div>
+                            </div>
+                            <h1>артем & ксения</h1>
                         </div>
-                        <h1>артем & ксения</h1>
+
                     </div>
-                    <div class="section-hero__cards">
-                        <div class="photo-card">
-                            <div class="photo-card__image">
-                                <div class="photo-card__image-inner">
-                                    <img src="./img/card.png" alt="">
-                                </div>
-                            </div>
-                            <h3>- интересно , кто будет моим мужем, когда я вырасту?</h3>
-                        </div>
-                        <div class="photo-card">
-                            <div class="photo-card__image">
-                                <div class="photo-card__image-inner">
-                                    <img src="./img/card2.png" alt="">
-                                </div>
-                            </div>
-                            <h3>- я! 🩷</h3>
+                </div>
+            </div>
+        </section>
+
+        <section class="section mb-5">
+            <div class="container">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-12 col-lg-6">
+                        <div class="moment-content">
+                            <div class="line"></div>
+                            <h2>узнали этих малышей?</h2>
+                            <p>время пролетело незаметно. и вот наступил тот момент, когда наши детские мечты стали
+                                реальностью.
+                                разделите с нами это главное событие нашей жизни - подарите нам свое внимание и
+                                поддержку!
+                            </p>
+                            <img src="./img/heart.png" alt="">
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <section class="section wedding-date _p-bg _flowest mb-5">
+            <div class="container text-center">
+                <div class="row justify-content-center">
+                    <div class="col-11 col-lg-6">
+                        <div class="calendar-block">
+                            <h2 class="wedding-date__title">Мы ждём вас</h2>
+
+                            <div class="wedding-date__calendar">
+                                <div class="wedding-date__month">Июль</div>
+
+                                <div class="calendar">
+                                    <!-- Дни недели -->
+                                    <div class="calendar__weekdays">
+                                        <div>П</div>
+                                        <div>В</div>
+                                        <div>С</div>
+                                        <div>Ч</div>
+                                        <div>П</div>
+                                        <div>С</div>
+                                        <div>В</div>
+                                    </div>
+
+                                    <!-- Числа -->
+                                    <div class="calendar__days">
+                                        <div></div>
+                                        <div></div>
+                                        <div>1</div>
+                                        <div>2</div>
+                                        <div>3</div>
+                                        <div>4</div>
+                                        <div>5</div>
+
+                                        <div>6</div>
+                                        <div>7</div>
+                                        <div>8</div>
+                                        <div>9</div>
+                                        <div>10</div>
+                                        <div>11</div>
+                                        <div>12</div>
+
+                                        <div>13</div>
+                                        <div>14</div>
+                                        <div>15</div>
+                                        <div>16</div>
+                                        <div>17</div>
+                                        <div class="calendar__day calendar__day--active">18</div>
+                                        <div>19</div>
+
+                                        <div>20</div>
+                                        <div>21</div>
+                                        <div>22</div>
+                                        <div>23</div>
+                                        <div>24</div>
+                                        <div>25</div>
+                                        <div>26</div>
+
+                                        <div>27</div>
+                                        <div>28</div>
+                                        <div>29</div>
+                                        <div>30</div>
+                                        <div>31</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class="wedding-date__text">
+                                Не пропустите важное событие этого лета — день нашей свадьбы!
+                            </p>
+
+                            <div class="wedding-date__date">
+                                18 / 07 / 2026
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section location mb-5">
+            <div class="container">
+                <div class="row gy-5">
+                    <div class="col-12 col-lg-6 d-flex align-items-center">
+                        <div class="location-content">
+                            <h1>место проведения</h1>
+                            <h3>Парк Холл <br>
+                                <span>проспект Мира,32</span>
+                            </h3>
+                            <h2>-СБОР ГОСТЕЙ В 15:00</h2>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 position-relative">
+                        <div class="responsive-image h-100" style="padding-bottom: 53%;border-radius: 10px;">
+                            <img src="./img/location.png" alt="">
+                        </div>
+                        <a class="location-marker" href="https://yandex.by/maps/-/CPqXVNkP" target="_blank">Как
+                            добраться</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section timing _p-bg _paper">
+            <div class="container">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-12 text-center d-flex flex-column gap-5">
+                        <h1 class="section-title">ТАЙМИНГ</h1>
+                        <div class="timings">
+                            <div class="timing-item">
+                                <div class="timing-item_image">
+                                    <img src="./img/timing.png" alt="">
+                                </div>
+                                <div class="timing-item-title">
+                                    <h1>15:00 - СБОР ГОСТЕЙ
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="timing-item">
+                                <div class="timing-item_image">
+                                    <img src="./img/timing2.png" alt="">
+                                </div>
+                                <div class="timing-item-title">
+                                    <h1>15:30 - ЦЕРЕМОНИЯ РЕГИСТИРАЦИИ</h1>
+                                </div>
+                            </div>
+                            <div class="timing-item">
+                                <div class="timing-item_image">
+                                    <img src="./img/timing6.png" alt="">
+                                </div>
+                                <div class="timing-item-title">
+                                    <h1>16:00 - ФУРШЕТ</h1>
+                                </div>
+                            </div>
+                            <div class="timing-item">
+                                <div class="timing-item_image">
+                                    <img src="./img/timing4.png" alt="">
+                                </div>
+                                <div class="timing-item-title">
+                                    <h1>17:00 - БАНКЕТ</h1>
+                                </div>
+                            </div>
+                            <div class="timing-item">
+                                <div class="timing-item_image">
+                                    <img src="./img/timing5.png" alt="">
+                                </div>
+                                <div class="timing-item-title">
+                                    <h1>23:00 - ЗАВЕРШЕНИЕ ВЕЧЕРА</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section mb-5 _p-bg _flowest">
+            <div class="container">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-11 col-lg-9">
+                        <div class="timer-container">
+                            <h1>до нашей свадьбы осталось</h1>
+                            <div class="timer">
+                                <div class="timer-item _days">
+                                    <div class="count">
+                                        <div>0</div>
+                                        <div>0</div>
+                                    </div>
+                                    <p>Дней</p>
+                                </div>
+                                <div class="timer-item _hours">
+                                    <div class="count">
+                                        <div>0</div>
+                                        <div>0</div>
+                                    </div>
+                                    <p>часов</p>
+                                </div>
+                                <div class="timer-item _mins">
+                                    <div class="count">
+                                        <div>0</div>
+                                        <div>0</div>
+                                    </div>
+                                    <p>минут</p>
+                                </div>
+                                <div class="timer-item _secs">
+                                    <div class="count">
+                                        <div>0</div>
+                                        <div>0</div>
+                                    </div>
+                                    <p>секунд</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section wishe">
+            <div class="container">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-12 col-lg-6">
+                        <h1>Пожелания</h1>
+                        <div class="swiper mySwiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="wishe-card">
+                                        <p>будем очень признательны, если вы воздержитесь от криков “горько”. ведь
+                                            поцелуй - это знак выражения чувств, и он не может быть по заказу! </p>
+                                        <p>мы очень ждём и готовимся к нашему незабываемому дню! Поддержите нас вашими
+                                            улыбками и прекрасным настроением, а также красивыми нарядами.</p>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="wishe-card">
+                                        <p>будем очень признательны, если вы воздержитесь от криков “горько”. ведь
+                                            поцелуй - это знак выражения чувств, и он не может быть по заказу! </p>
+                                        <p>мы очень ждём и готовимся к нашему незабываемому дню! Поддержите нас вашими
+                                            улыбками и прекрасным настроением, а также красивыми нарядами.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-bottom">
+                                <div class="slider-nav">
+                                    <div class="nav-btn prev">←</div>
+                                    <div class="pagination"></div>
+                                    <div class="nav-btn next">→</div>
+                                </div>
+                                <p>с любовью артём и ксения!</p>
+                            </div>
+
+                        </div>
+                        <div class="wishe-date">18.07.2026</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section _p-bg _paper">
+            <div class="container">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-12 text-center d-flex flex-column gap-5">
+                        <h1>анкета гостя</h1>
+                        <h2>пожалуйста, подтвердите  своё присутствие на мероприятии до 18.07.2026</h2>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
     <script src="js/script.js"></script>
 
 </body>

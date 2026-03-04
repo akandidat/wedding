@@ -1,7 +1,22 @@
+@use 'sass:map';
 @use 'sass:math';
 // 1. RESPONSIVE BREAKPOINTS
 $maxWidth: 1400px;
 $minWidth: 390px;
+
+// Breakpoints map
+$breakpoints: (
+    xs: 0,
+    xxsm: 350,
+    xssm: 450,
+    xsm: 500,
+    sm: 576,
+    smd: 650,
+    md: 768,
+    lg: 992,
+    xl: 1200,
+    xxl: 1400,
+);
 
 // Responsive adaptive value mixin
 @mixin adaptiveValue($property, $desktopValue, $mobileValue, $unit: px) {
@@ -38,6 +53,51 @@ $minWidth: 390px;
         height: 100%;
         object-fit: $fit;
     }
+}
+
+// Media query mixins
+@mixin media-breakpoint-up($name) {
+    $min: map.get($breakpoints, $name);
+
+    @if $min ==null {
+        @warn "Breakpoint `#{$name}` not found in \$breakpoints map.";
+        @content;
+    }
+
+    @else if $min ==0 {
+        @content;
+    }
+
+    @else {
+        @media (min-width: #{$min}px) {
+            @content;
+        }
+    }
+}
+
+.responsive-image {
+    display: block;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+
+    img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &._contain {
+        img {
+            object-fit: contain;
+        }
+    }
+}
+
+body {
+    color: #313131;
 }
 
 .loading-screen {
@@ -240,33 +300,64 @@ $minWidth: 390px;
     }
 }
 
-.section-hero {
-    @include adaptiveValue(padding-block, 90, 90);
-    background-image: url(../img/hero-bg.png);
+.section {
     @include bgProps(cover, no-repeat, center);
 
+    &._flowest {
+        background-image: url(../img/flowest.png);
+    }
+
+    &._paper {
+        background-image: url(../img/hero-bg.png);
+    }
+
+    &._p-bg {
+        @include adaptiveValue(padding-block, 50, 50);
+    }
+}
+
+.section-hero {
     .section-hero__content {
         display: flex;
         flex-direction: column;
-        gap: 180px;
+        // gap: 280px;
         align-items: center;
+        @include adaptiveValue(height, 800, 600);
+        justify-content: space-between;
 
-        h2 {
-            color: #313131;
-            text-transform: uppercase;
-            font-family: "Playfair Display", serif;
-            font-size: 40px;
-        }
-
-        .section-hero__content-date {
+        .section-hero__content-top {
             display: flex;
             flex-direction: column;
-            color: #313131;
-            font-family: "Cormorant", serif;
-            font-size: 80px;
-            line-height: 111%;
-            text-align: center;
+            align-items: end;
+
+            h2 {
+                color: #313131;
+                text-transform: uppercase;
+                font-family: "Playfair Display", serif;
+                font-size: 40px;
+            }
+
+            .section-hero__content-date {
+                display: flex;
+                flex-direction: column;
+                color: #313131;
+                font-family: "Cormorant", serif;
+                font-size: 50px;
+                line-height: 90%;
+                text-align: center;
+
+                @include media-breakpoint-up(lg) {
+                    font-size: 80px;
+                    line-height: 111%;
+                }
+            }
+
+            @include media-breakpoint-up(lg) {
+                align-items: center;
+                gap: 180px;
+            }
         }
+
 
         h1 {
             color: #313131;
@@ -274,29 +365,452 @@ $minWidth: 390px;
             font-family: "Viaoda Libre", serif;
             font-size: 55px;
         }
+
+        @include media-breakpoint-up(lg) {
+            // gap: 180px;
+        }
     }
 }
 
-.photo-card {
+.section-hero__cards {
     display: flex;
-    width: 300px;
-    height: 350px;
-    flex-direction: column;
-    gap: 10px;
-    background-color: #FFFFFF;
-    padding-inline: 30px;
-    padding-block: 30px;
+    flex-direction: row;
+    justify-content: space-around;
+    position: absolute;
+    width: 100%;
+    top: 20%;
 
-    .photo-card__image {
-        .photo-card__image-inner {
-            @include responsive-image(1, 1, cover);
+    .photo-card {
+        display: flex;
+        @include adaptiveValue(width, 350, 300);
+        // @include adaptiveValue(height, 350, 250);
+        height: fit-content;
+        flex-direction: column;
+        gap: 10px;
+        background-color: #FFFFFF;
+        padding-inline: 15px;
+        padding-block: 15px;
+        transform: rotate(-15deg);
+
+        .photo-card__image {
+            .photo-card__image-inner {
+                @include responsive-image(1, 1, cover);
+            }
+        }
+
+        h3 {
+            font-family: "RocknRoll One", sans-serif;
+            font-size: 15px;
+            color: #313131;
+            line-height: 111%;
+        }
+
+        &._rotate {
+            transform: rotate(15deg);
+            margin-top: 100px;
+        }
+    }
+
+
+}
+
+.moment-content {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 30px;
+
+    .line {
+        width: 1px;
+        height: 130px;
+        background: #313131;
+    }
+
+    h2 {
+        font-size: 64px;
+        @include adaptiveValue(font-size, 64, 56);
+        font-family: "Viaoda Libre", serif;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 111%;
+        text-transform: uppercase;
+    }
+
+    p {
+        font-size: 20px;
+        font-family: "Cormorant", serif;
+        font-optical-sizing: auto;
+        font-weight: 300;
+        font-style: normal;
+        line-height: 111%;
+        text-transform: uppercase;
+    }
+
+    img {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+.wedding-date {
+    color: #6c6c6c;
+    font-family: 'Cormorant', serif;
+
+    @media (max-width: 991px) {
+        padding-block: 70px;
+    }
+
+    @media (max-width: 575px) {
+        padding-block: 50px;
+    }
+
+    &__title {
+        font-size: clamp(28px, 5vw, 48px);
+        font-weight: 300;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 40px;
+        color: #bdbdbd;
+    }
+
+    &__month {
+        font-size: clamp(16px, 3vw, 22px);
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin-bottom: 25px;
+    }
+
+    &__text {
+        margin-top: 50px;
+        font-size: clamp(14px, 2.5vw, 20px);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        line-height: 1.6;
+        padding-inline: 10px;
+    }
+
+    &__date {
+        margin-top: 25px;
+        font-size: clamp(18px, 4vw, 32px);
+        letter-spacing: 4px;
+    }
+
+    .calendar-block {
+        background-color: #FFFFFF;
+        border-radius: 125px 0 125px 0;
+        padding: 60px 40px;
+        display: flex;
+        flex-direction: column;
+        @include adaptiveValue(gap, 10, 20);
+
+        @media (max-width: 991px) {
+            padding: 40px 25px;
+            border-radius: 80px 0 80px 0;
+        }
+
+        @media (max-width: 575px) {
+            padding: 30px 20px;
+            border-radius: 50px 0 50px 0;
+        }
+    }
+}
+
+.calendar {
+    max-width: 420px;
+    margin: 0 auto;
+    color: #313131;
+
+    @media (max-width: 575px) {
+        max-width: 100%;
+    }
+
+    div {
+        padding: 5px;
+    }
+
+    &__weekdays,
+    &__days {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        text-align: center;
+    }
+
+    &__weekdays {
+        margin-bottom: 15px;
+        font-size: clamp(10px, 2vw, 14px);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+
+    &__days {
+        gap: clamp(8px, 2vw, 18px);
+        font-size: clamp(14px, 3vw, 20px);
+    }
+
+    &__day {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &--active {
+            position: relative;
+            font-weight: 500;
+
+            &::after {
+                content: "";
+                position: absolute;
+                width: 42px;
+                height: 42px;
+                border: 1.5px solid #6c6c6c;
+                border-radius: 50%;
+                transform: rotate(-12deg);
+
+                /* незамкнутый круг */
+                clip-path: polygon(0% 0%,
+                        100% 0%,
+                        100% 85%,
+                        0% 100%);
+            }
+
+            @media (max-width: 575px) {
+                &::after {
+                    width: 34px;
+                    height: 34px;
+                }
+            }
+        }
+    }
+}
+
+.location-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-family: 'Cormorant', serif;
+
+
+    h1 {
+        font-size: 48px;
+        text-transform: uppercase;
+        text-align: center;
+
+        @include media-breakpoint-up(lg) {
+            text-align: start;
         }
     }
 
     h3 {
-        font-family: "RocknRoll One", sans-serif;
-        font-size: 15px;
+        font-size: 36px;
+
+        span {
+            font-weight: 100;
+        }
+    }
+
+    h2 {
+        font-size: 36px;
+        text-transform: uppercase;
+        opacity: 40%;
+    }
+
+    @include media-breakpoint-up(lg) {
+        gap: 10px;
+    }
+}
+
+.location-marker {
+    position: absolute;
+    bottom: -50px;
+    justify-self: center;
+    @include adaptiveValue(width, 130, 100);
+    @include adaptiveValue(height, 130, 100);
+    color: #313131;
+    text-decoration: none;
+    border: 1px solid #313131;
+    border-radius: 50%;
+
+    font-family: "Cormorant", sans-serif;
+    @include adaptiveValue(font-size, 18, 14);
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: .04em;
+    text-align: center;
+    background: #FFFFFF;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .3s;
+
+    &:hover {
+        color: #FFFFFF;
+        background-color: #313131;
+    }
+
+    @include media-breakpoint-up(lg) {
+        align-self: anchor-center;
+        bottom: auto;
+        left: -50px;
+    }
+}
+
+.timing {
+    .section-title {
+        font-family: "Cormorant", serif;
+        font-size: 70px;
+        text-transform: uppercase;
+        text-align: center;
+        opacity: 75%;
+    }
+
+    .timings {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 45px;
+
+        .timing-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+
+            img {
+                height: 85px;
+            }
+
+            .timing-item-title {
+                font-size: 32px;
+                font-family: "Source Serif 4", serif;
+
+                h1 {
+                    font-weight: 300;
+                }
+            }
+        }
+    }
+}
+
+.timer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include adaptiveValue(padding-inline, 100, 30);
+    @include adaptiveValue(padding-block, 50, 10);
+    background-color: #FFFFFF;
+    border-radius: 50px 0 50px 0;
+    @include adaptiveValue(gap, 50, 15);
+
+    h1 {
+        @include adaptiveValue(font-size, 36, 11);
         color: #313131;
-         line-height: 111%;
+        text-transform: uppercase;
+        font-family: "Viaoda Libre", serif;
+        opacity: 30%;
+    }
+
+    .timer {
+        display: flex;
+        flex-direction: row;
+        @include adaptiveValue(gap, 38, 9);
+
+
+        .timer-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            @include adaptiveValue(gap, 8, 3);
+
+
+            .count {
+                display: flex;
+                flex-direction: row;
+                @include adaptiveValue(gap, 7, 3);
+
+                div {
+                    padding-block: 10px;
+                    padding-inline: 20px;
+                    @include adaptiveValue(padding-inline, 20, 6);
+                    @include adaptiveValue(padding-block, 10, 0);
+                    @include adaptiveValue(font-size, 40, 13);
+                    border: 1px solid #C6C4C4;
+                }
+            }
+
+        }
+    }
+
+    @include media-breakpoint-up(lg) {
+        border-radius: 125px 0 125px 0;
+    }
+}
+
+
+.wishe {
+
+    h1 {
+        font-family: "Cormorant", serif;
+        font-size: 48px;
+        text-transform: uppercase;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .swiper-bottom {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+
+        .slider-nav {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            width: fit-content;
+
+            .nav-btn {
+                cursor: pointer;
+                font-size: 20px;
+                user-select: none;
+                font-family: "Cormorant", serif;
+            }
+
+            .pagination {
+                font-size: 18px;
+
+            }
+        }
+
+        p {
+            font-family: "Cormorant", serif;
+            margin: 0;
+            font-size: 24px;
+            text-transform: uppercase;
+            opacity: 50%;
+        }
+    }
+
+    .wishe-card {
+
+        p {
+            font-family: "Cormorant", serif;
+            font-size: 16px;
+            text-transform: uppercase;
+            text-align: center;
+            color: #313131;
+        }
+
+    }
+
+    .wishe-date {
+        text-align: center;
+        margin-top: 50px;
+        font-family: "Viaoda Libre", serif;
+        opacity: 8%;
+        @include adaptiveValue(font-size, 150, 40);
     }
 }
