@@ -99,7 +99,7 @@ $breakpoints: (
 body {
     color: #313131;
 
-    .lock {
+    &.lock {
         overflow: hidden;
         /* Чтобы на мобилках точно не дергалось */
         touch-action: none;

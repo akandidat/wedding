@@ -21,7 +21,7 @@
 body {
   color: #313131;
 }
-body .lock {
+body.lock {
   overflow: hidden;
   /* Чтобы на мобилках точно не дергалось */
   touch-action: none;
