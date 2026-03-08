@@ -256,6 +256,7 @@ body {
 
 .sm-opener_content-bottom {
     font-family: "Cormorant", serif;
+    color: #dad4c4;
 }
 
 .sm-opener_content-button {
@@ -265,6 +266,7 @@ body {
         &::before {
             font-size: 50px;
             content: "\e928";
+            color: #dad4c4;
         }
     }
 
@@ -273,7 +275,7 @@ body {
         position: absolute;
         width: 13px;
         height: 13px;
-        border: 2px solid #000000;
+        border: 2px solid #dad4c4;
         border-radius: 50%;
         top: -3px;
         left: 13px;
@@ -304,11 +306,11 @@ body {
     @include bgProps(cover, no-repeat, center);
 
     &._flowest {
-        background-image: url(../img/flowest.png);
+        background-image: url(../img/flowest111.png);
     }
 
     &._paper {
-        background-image: url(../img/hero-bg.png);
+        background-image: url(../img/paper.jpg);
     }
 
     &._p-bg {
@@ -399,15 +401,22 @@ body {
         }
 
         h3 {
-            font-family: "RocknRoll One", sans-serif;
-            font-size: 15px;
+             font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
             color: #313131;
             line-height: 111%;
+
+
         }
 
         &._rotate {
             transform: rotate(15deg);
             margin-top: 100px;
+        }
+
+        .heart {
+            color: #ff5c9a;
+
         }
     }
 
@@ -812,5 +821,106 @@ body {
         font-family: "Viaoda Libre", serif;
         opacity: 8%;
         @include adaptiveValue(font-size, 150, 40);
+    }
+}
+
+.rsvp-card {
+    max-width: 640px;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(6px);
+    padding: 50px;
+    border-radius: 40px;
+
+    @media (max-width: 768px) {
+        padding: 30px;
+        border-radius: 25px;
+    }
+}
+
+.form-title {
+    font-size: 20px;
+    font-weight: 400;
+    color: #2f2f2f;
+}
+
+.question {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #2f2f2f;
+}
+
+.custom-input {
+    border-radius: 18px;
+    padding: 14px 20px;
+    border: 1px solid #6f6f6f;
+    font-size: 16px;
+
+    &:focus {
+        border-color: #bfa88f;
+        box-shadow: none;
+    }
+}
+
+.form-check {
+    margin-bottom: 8px;
+
+    .form-check-input {
+        width: 18px;
+        height: 18px;
+        margin-top: 4px;
+        border: 1px solid #6f6f6f;
+
+        &:checked {
+            background-color: #bfa88f;
+            border-color: #bfa88f;
+        }
+
+        &:focus {
+            box-shadow: none;
+        }
+    }
+
+    .form-check-label {
+        margin-left: 6px;
+        font-size: 16px;
+    }
+}
+
+.btn-submit {
+    margin-top: 10px;
+    border-radius: 20px;
+    padding: 12px 30px;
+    background: #bfa88f;
+    color: white;
+    border: none;
+
+    &:hover {
+        background: #a89277;
+    }
+}
+
+.wedding-footer {
+    padding: 70px 0;
+
+    .footer-text {
+        font-family: "Cormorant Garamond", serif; // можно заменить
+        font-size: 20px;
+        letter-spacing: 1px;
+        color: #8a8a8a;
+        line-height: 1.5;
+        text-transform: uppercase;
+    }
+
+    .heart {
+        color: #ff5c9a;
+        margin-left: 4px;
+    }
+
+    @media (max-width: 768px) {
+        padding: 50px 0;
+
+        .footer-text {
+            font-size: 18px;
+        }
     }
 }

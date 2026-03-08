@@ -166,6 +166,7 @@ body {
 
 .sm-opener_content-bottom {
   font-family: "Cormorant", serif;
+  color: #dad4c4;
 }
 
 .sm-opener_content-button {
@@ -174,13 +175,14 @@ body {
 .sm-opener_content-button .icon-icons8-forefinger-50::before {
   font-size: 50px;
   content: "\e928";
+  color: #dad4c4;
 }
 .sm-opener_content-button .pulse-circle {
   content: "";
   position: absolute;
   width: 13px;
   height: 13px;
-  border: 2px solid #000000;
+  border: 2px solid #dad4c4;
   border-radius: 50%;
   top: -3px;
   left: 13px;
@@ -207,10 +209,10 @@ body {
   background-position: center;
 }
 .section._flowest {
-  background-image: url(../img/flowest.png);
+  background-image: url(../img/flowest111.png);
 }
 .section._paper {
-  background-image: url(../img/hero-bg.png);
+  background-image: url(../img/paper.jpg);
 }
 .section._p-bg {
   padding-block: calc(50px + 0 * (100vw - 390px) / 1010);
@@ -318,14 +320,17 @@ body {
      object-fit: cover;
 }
 .section-hero__cards .photo-card h3 {
-  font-family: "RocknRoll One", sans-serif;
-  font-size: 15px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 20px;
   color: #313131;
   line-height: 111%;
 }
 .section-hero__cards .photo-card._rotate {
   transform: rotate(15deg);
   margin-top: 100px;
+}
+.section-hero__cards .photo-card .heart {
+  color: #ff5c9a;
 }
 
 .moment-content {
@@ -776,5 +781,99 @@ body {
 @media (min-width: 1400px) {
   .wishe .wishe-date {
     font-size: 150px;
+  }
+}
+
+.rsvp-card {
+  max-width: 640px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(6px);
+  padding: 50px;
+  border-radius: 40px;
+}
+@media (max-width: 768px) {
+  .rsvp-card {
+    padding: 30px;
+    border-radius: 25px;
+  }
+}
+
+.form-title {
+  font-size: 20px;
+  font-weight: 400;
+  color: #2f2f2f;
+}
+
+.question {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #2f2f2f;
+}
+
+.custom-input {
+  border-radius: 18px;
+  padding: 14px 20px;
+  border: 1px solid #6f6f6f;
+  font-size: 16px;
+}
+.custom-input:focus {
+  border-color: #bfa88f;
+  box-shadow: none;
+}
+
+.form-check {
+  margin-bottom: 8px;
+}
+.form-check .form-check-input {
+  width: 18px;
+  height: 18px;
+  margin-top: 4px;
+  border: 1px solid #6f6f6f;
+}
+.form-check .form-check-input:checked {
+  background-color: #bfa88f;
+  border-color: #bfa88f;
+}
+.form-check .form-check-input:focus {
+  box-shadow: none;
+}
+.form-check .form-check-label {
+  margin-left: 6px;
+  font-size: 16px;
+}
+
+.btn-submit {
+  margin-top: 10px;
+  border-radius: 20px;
+  padding: 12px 30px;
+  background: #bfa88f;
+  color: white;
+  border: none;
+}
+.btn-submit:hover {
+  background: #a89277;
+}
+
+.wedding-footer {
+  padding: 70px 0;
+}
+.wedding-footer .footer-text {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 20px;
+  letter-spacing: 1px;
+  color: #8a8a8a;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+.wedding-footer .heart {
+  color: #ff5c9a;
+  margin-left: 4px;
+}
+@media (max-width: 768px) {
+  .wedding-footer {
+    padding: 50px 0;
+  }
+  .wedding-footer .footer-text {
+    font-size: 18px;
   }
 }/*# sourceMappingURL=style.css.map */

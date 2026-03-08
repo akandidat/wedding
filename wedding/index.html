@@ -11,7 +11,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&family=Cormorant:ital,wght@0,300..700;1,300..700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=RocknRoll+One&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=Viaoda+Libre&display=swap"
         rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
     <!-- Bootstrap 5.3 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         crossorigin="anonymous" />
@@ -78,7 +78,7 @@
                                             <img src="./img/card2.png" alt="">
                                         </div>
                                     </div>
-                                    <h3>- я! 🩷</h3>
+                                    <h3 class="text-center">- я! <span class="heart">❤</span></h3>
                                 </div>
                             </div>
                             <h1>артем & ксения</h1>
@@ -313,10 +313,20 @@
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
                                     <div class="wishe-card">
-                                        <p>будем очень признательны, если вы воздержитесь от криков “горько”. ведь
-                                            поцелуй - это знак выражения чувств, и он не может быть по заказу! </p>
-                                        <p>мы очень ждём и готовимся к нашему незабываемому дню! Поддержите нас вашими
-                                            улыбками и прекрасным настроением, а также красивыми нарядами.</p>
+                                        <p>Вход на наш праздник — по лотерейным билетам.</p>
+                                        <p>Будем рады, если вы принесёте лотерейный билет — вдруг именно он окажется
+                                            счастливым и принесёт нам удачу в начале нашей семейной жизни.</p>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="wishe-card">
+                                        <p>Пожалуйста, не дарите нам цветы! Мы, к сожалению, не успеем насладиться их
+                                            красотой и ароматом. Если вы хотите порадовать нас полезным подарком, будем
+                                            очень благодарны за подарочные сертификаты в строительный или интерьерный
+                                            магазин — они помогут нам в обустройстве нашего дома.</p>
+                                        <p>Также вы можете подарить бутылку вашего любимого вина и написать на ней,
+                                            когда или по какому поводу нам стоит её открыть — нам будет очень приятно
+                                            вспоминать о вас в этот момент.</p>
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
@@ -347,14 +357,91 @@
         <section class="section _p-bg _paper">
             <div class="container">
                 <div class="row d-flex justify-content-center">
-                    <div class="col-12 text-center d-flex flex-column gap-5">
-                        <h1>анкета гостя</h1>
-                        <h2>пожалуйста, подтвердите  своё присутствие на мероприятии до 18.07.2026</h2>
+                    <div class="col-12">
+                        <div class="rsvp-card mx-auto">
+
+                            <form>
+
+                                <h5 class="form-title mb-4">
+                                    Пожалуйста, подтвердите Ваше присутствие:
+                                </h5>
+
+                                <div class="mb-4">
+                                    <input type="text" class="form-control custom-input" placeholder="Имя и Фамилия" />
+                                </div>
+
+                                <div class="mb-4">
+                                    <p class="question">Планируете ли Вы присутствовать?</p>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="attendance" id="yes">
+                                        <label class="form-check-label" for="yes">
+                                            Да, с удовольствием
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="attendance" id="no">
+                                        <label class="form-check-label" for="no">
+                                            Не смогу
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <p class="question">
+                                        Если Вы будете не одни, пожалуйста, заполните поле ниже:
+                                    </p>
+
+                                    <input type="text" class="form-control custom-input"
+                                        placeholder="Имя и Фамилия Вашего спутника/спутницы" />
+                                </div>
+
+                                <div class="mb-4">
+                                    <p class="question">
+                                        Планируете ли Вы прийти с детьми?
+                                    </p>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="kids" id="kidsYes">
+                                        <label class="form-check-label" for="kidsYes">
+                                            Да
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="kids" id="kidsNo">
+                                        <label class="form-check-label" for="kidsNo">
+                                            Нет
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <input type="text" class="form-control custom-input"
+                                        placeholder="Если да, укажите количество детей" />
+                                </div>
+
+                                <button type="submit" class="btn btn-submit">
+                                    Отправить
+                                </button>
+
+                            </form>
+
+                        </div>
 
                     </div>
                 </div>
             </div>
         </section>
+        <footer class="wedding-footer">
+            <div class="container">
+                <p class="footer-text">
+                    ДО СКОРОЙ ВСТРЕЧИ! <br>
+                    С ЛЮБОВЬЮ АРТЁМ И КСЕНИЯ<span class="heart">❤</span>
+                </p>
+            </div>
+        </footer>
     </main>
 
 
