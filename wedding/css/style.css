@@ -21,11 +21,6 @@
 body {
   color: #313131;
 }
-body.lock {
-  overflow: hidden;
-  /* Чтобы на мобилках точно не дергалось */
-  touch-action: none;
-}
 
 .loading-screen {
   position: fixed;
@@ -539,7 +534,7 @@ body.lock {
 .location-marker {
   position: absolute;
   bottom: -50px;
-  justify-self: center;
+  left: 40%;
   width: calc(100px + 30 * (100vw - 390px) / 1010);
 }
 @media (min-width: 1400px) {
@@ -586,8 +581,7 @@ body.lock {
 }
 @media (min-width: 992px) {
   .location-marker {
-    align-self: anchor-center;
-    bottom: auto;
+    bottom: 30%;
     left: -50px;
   }
 }

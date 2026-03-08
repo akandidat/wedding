@@ -98,12 +98,6 @@ $breakpoints: (
 
 body {
     color: #313131;
-
-    &.lock {
-        overflow: hidden;
-        /* Чтобы на мобилках точно не дергалось */
-        touch-action: none;
-    }
 }
 
 .loading-screen {
@@ -639,7 +633,7 @@ body {
 .location-marker {
     position: absolute;
     bottom: -50px;
-    justify-self: center;
+    left: 40%;
     @include adaptiveValue(width, 130, 100);
     @include adaptiveValue(height, 130, 100);
     color: #313131;
@@ -666,8 +660,7 @@ body {
     }
 
     @include media-breakpoint-up(lg) {
-        align-self: anchor-center;
-        bottom: auto;
+        bottom: 30%;
         left: -50px;
     }
 }

@@ -1,24 +1,19 @@
-let loading_screen = document.querySelector('.loading-screen');
-const body = document.body;
+// let loading_screen = document.querySelector('.loading-screen');
 
-// Блокируем скролл сразу при загрузке страницы
-body.classList.add('lock');
+// loading_screen.addEventListener('click', function (e) {
+//     this.classList.add('active');
 
-loading_screen.addEventListener('click', function (e) {
-    this.classList.add('active');
+//     // Прокрутка страницы в самое начало (в координаты 0, 0)
+//     window.scrollTo({
+//         top: 0,
+//         behavior: 'instant' // 'smooth' для плавной прокрутки или 'instant' для мгновенной
+//     });
 
-    // Очищаем предыдущий таймер, если он был (защита от двойного клика)
-    if (this._hideTimer) clearTimeout(this._hideTimer);
-
-    this._hideTimer = setTimeout(() => {
-        this.style.display = 'none';
-        
-        // РАЗБЛОКИРУЕМ СКРОЛЛ
-        body.classList.remove('lock');
-        
-        this.classList.remove('active');
-    }, 1000);
-});
+//     this._hideTimer = setTimeout(() => {
+//         this.style.display = 'none';
+//         this.classList.remove('active');
+//     }, 1000);
+// });
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -99,4 +94,9 @@ var swiper = new Swiper(".mySwiper", {
             return number;
         }
     }
+});
+
+AOS.init({
+    duration: 1000,
+    once: true
 });
