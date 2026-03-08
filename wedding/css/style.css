@@ -21,6 +21,11 @@
 body {
   color: #313131;
 }
+body .lock {
+  overflow: hidden;
+  /* Чтобы на мобилках точно не дергалось */
+  touch-action: none;
+}
 
 .loading-screen {
   position: fixed;

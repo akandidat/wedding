@@ -1,15 +1,24 @@
 let loading_screen = document.querySelector('.loading-screen');
+const body = document.body;
+
+// Блокируем скролл сразу при загрузке страницы
+body.classList.add('lock');
+
 loading_screen.addEventListener('click', function (e) {
     this.classList.add('active');
 
+    // Очищаем предыдущий таймер, если он был (защита от двойного клика)
+    if (this._hideTimer) clearTimeout(this._hideTimer);
+
     this._hideTimer = setTimeout(() => {
         this.style.display = 'none';
-        // Опционально: удаляем класс после скрытия (чистота)
+        
+        // РАЗБЛОКИРУЕМ СКРОЛЛ
+        body.classList.remove('lock');
+        
         this.classList.remove('active');
-        // Опционально: удаляем обработчик (если элемент может быть показан снова)
-        // this.removeEventListener('click', arguments.callee);
     }, 1000);
-})
+});
 
 
 document.addEventListener("DOMContentLoaded", function () {
