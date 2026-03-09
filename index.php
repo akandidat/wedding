@@ -24,7 +24,7 @@
 </head>
 
 <body>
-    <!-- <div class="loading-screen">
+    <div class="loading-screen">
         <img src="img/preloader.png" alt="zxc" class="logo" />
         <div class="sm-opener_content">
             <div class="sm-envelope_back">
@@ -48,7 +48,7 @@
             </div>
         </div>
 
-    </div> -->
+    </div>
     <main>
         <section class="section section-hero _p-bg _paper mb-5">
             <div class="container">
@@ -65,7 +65,7 @@
 
                             </div>
                             <div class="section-hero__cards">
-                                <div class="photo-card" data-aos="fade-right" data-aos-delay="300">
+                                <div class="photo-card">
                                     <div class="photo-card__image">
                                         <div class="photo-card__image-inner">
                                             <img src="./img/card.png" alt="">
@@ -73,7 +73,7 @@
                                     </div>
                                     <h3>- интересно , кто будет моим мужем, когда я вырасту?</h3>
                                 </div>
-                                <div class="photo-card _rotate" data-aos="fade-left" data-aos-delay="500">
+                                <div class="photo-card _rotate">
                                     <div class="photo-card__image">
                                         <div class="photo-card__image-inner">
                                             <img src="./img/card2.png" alt="">
@@ -263,11 +263,11 @@
             </div>
         </section>
 
-        <section class="section mb-5 _p-bg _flowest" data-aos="fade-up">
+        <section class="section mb-5 _p-bg _flowest">
             <div class="container">
                 <div class="row d-flex justify-content-center">
                     <div class="col-11 col-lg-9">
-                        <div class="timer-container">
+                        <div class="timer-container" data-aos="fade-up">
                             <h1>до нашей свадьбы осталось</h1>
                             <div class="timer">
                                 <div class="timer-item _days">
@@ -355,62 +355,73 @@
             </div>
         </section>
 
-        <section class="section _p-bg _paper" data-aos="zoom-in-up">
+        <section class="section _p-bg _paper">
             <div class="container">
                 <div class="row d-flex justify-content-center">
                     <div class="col-12">
-                        <div class="rsvp-card mx-auto">
+                        <div class="rsvp-card mx-auto" data-aos="zoom-in-up">
 
-                            <form id="tg-form">
-                                <h5 class="form-title mb-4">Пожалуйста, подтвердите Ваше присутствие:</h5>
+                            <div class="form-container">
+                                <form id="weddingForm">
+                                    <h5 class="form-title mb-4">Пожалуйста, подтвердите Ваше присутствие:</h5>
 
-                                <div class="mb-4">
-                                    <input type="text" id="name" name="name" class="form-control custom-input"
-                                        placeholder="Имя и Фамилия" required />
-                                </div>
-
-                                <div class="mb-4">
-                                    <p class="question">Планируете ли Вы присутствовать?</p>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="attendance" id="yes"
-                                            value="Да, с удовольствием" checked>
-                                        <label class="form-check-label" for="yes">Да, с удовольствием</label>
+                                    <div class="mb-4">
+                                        <input type="text" name="name" class="form-control custom-input"
+                                            placeholder="Ваше Имя и Фамилия" required />
                                     </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="attendance" id="no"
-                                            value="Не смогу">
-                                        <label class="form-check-label" for="no">Не смогу</label>
+
+                                    <div class="mb-4">
+                                        <p class="question">Планируете ли Вы присутствовать?</p>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="attendance" id="yes"
+                                                value="Да, с удовольствием" checked>
+                                            <label class="form-check-label" for="yes">Да, с удовольствием</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="attendance" id="no"
+                                                value="Не смогу">
+                                            <label class="form-check-label" for="no">Не смогу</label>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="mb-4">
-                                    <p class="question">Если Вы будете не одни, заполните поле ниже:</p>
-                                    <input type="text" id="partner" name="partner" class="form-control custom-input"
-                                        placeholder="Имя и Фамилия спутника/спутницы" />
-                                </div>
+                                    <div id="extra-fields">
+                                        <div class="mb-4">
+                                            <p class="question">Если Вы будете не одни, укажите спутника:</p>
+                                            <input type="text" name="partner" class="form-control custom-input"
+                                                placeholder="Имя и Фамилия спутника" />
+                                        </div>
 
-                                <div class="mb-4">
-                                    <p class="question">Планируете ли Вы прийти с детьми?</p>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="kids" id="kidsYes"
-                                            value="Да">
-                                        <label class="form-check-label" for="kidsYes">Да</label>
+                                        <div class="mb-4">
+                                            <p class="question">Планируете ли Вы прийти с детьми?</p>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="kids" id="kidsYes" value="Да">
+                                                <label class="form-check-label" for="kidsYes">Да</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="kids" id="kidsNo" value="Нет" checked>
+                                                <label class="form-check-label" for="kidsNo">Нет</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-4" id="kids-count-wrapper" style="display: none;">
+                                            <input type="number" name="kids_count" class="form-control custom-input"
+                                                placeholder="Укажите количество детей" min="1" />
+                                        </div>
                                     </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="kids" id="kidsNo" value="Нет"
-                                            checked>
-                                        <label class="form-check-label" for="kidsNo">Нет</label>
-                                    </div>
+
+                                    <button type="submit" id="submitBtn" class="btn btn-submit">Отправить</button>
+                                </form>
+
+                                <div id="successYes" style="display: none; text-align: center; padding: 30px 0;">
+                                    <h4 style="color: #d4a373;">Ура! ✨</h4>
+                                    <p>Мы очень рады, что вы будете с нами! До скорой встречи на торжестве!</p>
                                 </div>
 
-                                <div class="mb-4">
-                                    <input type="text" id="kids_count" name="kids_count"
-                                        class="form-control custom-input"
-                                        placeholder="Если да, укажите количество детей" />
+                                <div id="successNo" style="display: none; text-align: center; padding: 30px 0;">
+                                    <h4 style="color: #8c8c8c;">Очень жаль... 🤍</h4>
+                                    <p>Нам будет вас не хватать, но спасибо, что предупредили нас заранее!</p>
                                 </div>
-
-                                <button type="submit" class="btn btn-submit">Отправить</button>
-                            </form>
+                            </div>
 
                         </div>
 
