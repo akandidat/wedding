@@ -366,8 +366,10 @@
                                     <h5 class="form-title mb-4">Пожалуйста, подтвердите Ваше присутствие:</h5>
 
                                     <div class="mb-4">
-                                        <input type="text" name="name" class="form-control custom-input"
-                                            placeholder="Ваше Имя и Фамилия" required />
+                                        <input type="text" name="name" class="form-control custom-input" placeholder="Ваше Имя и Фамилия" required />
+                                        <div class="error-msg" style="color: #d9534f; font-size: 0.85rem; margin-top: 5px; display: none;">
+                                            Пожалуйста, укажите Имя и Фамилию.
+                                        </div>
                                     </div>
 
                                     <div class="mb-4">
@@ -389,6 +391,9 @@
                                             <p class="question">Если Вы будете не одни, укажите спутника:</p>
                                             <input type="text" name="partner" class="form-control custom-input"
                                                 placeholder="Имя и Фамилия спутника" />
+                                            <div class="error-msg" style="color: #d9534f; font-size: 0.85rem; margin-top: 5px; display: none;">
+                                                Пожалуйста, укажите полные Имя и Фамилию спутника.
+                                            </div>
                                         </div>
 
                                         <div class="mb-4">

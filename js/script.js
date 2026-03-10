@@ -101,7 +101,7 @@ AOS.init({
     once: true
 });
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('weddingForm');
     const extraFields = document.getElementById('extra-fields');
     const kidsCountWrapper = document.getElementById('kids-count-wrapper');
@@ -126,6 +126,31 @@ document.addEventListener('DOMContentLoaded', function() {
     form.addEventListener('submit', function (e) {
         e.preventDefault();
 
+        // Сбрасываем предыдущие ошибки
+        document.querySelectorAll('.error-msg').forEach(el => el.style.display = 'none');
+
+        const nameInput = form.querySelector('input[name="name"]');
+        const partnerInput = form.querySelector('input[name="partner"]');
+        const isAttending = document.querySelector('input[name="attendance"]:checked').value !== "Не смогу";
+
+        const isValidName = (str) => str.trim().split(/\s+/).filter(word => word !== "").length >= 2;
+
+        let hasError = false;
+
+        // Проверка имени
+        if (!isValidName(nameInput.value)) {
+            nameInput.nextElementSibling.style.display = 'block';
+            hasError = true;
+        }
+
+        // Проверка спутника (только если поле не пустое)
+        if (isAttending && partnerInput.value.trim() !== "" && !isValidName(partnerInput.value)) {
+            partnerInput.nextElementSibling.style.display = 'block';
+            hasError = true;
+        }
+
+        if (hasError) return; // Останавливаем выполнение, если есть ошибки
+
         const submitBtn = document.getElementById('submitBtn');
         const attendanceValue = document.querySelector('input[name="attendance"]:checked').value;
 
@@ -134,26 +159,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
         let formData = new FormData(this);
 
+        // Далее ваш код с fetch...
         fetch('send.php', {
             method: 'POST',
             body: formData
         })
-        .then(response => {
-            if (response.ok) {
-                form.style.display = 'none';
-                if (attendanceValue === "Не смогу") {
-                    document.getElementById('successNo').style.display = 'block';
+            .then(response => {
+                if (response.ok) {
+                    form.style.display = 'none';
+                    if (attendanceValue === "Не смогу") {
+                        document.getElementById('successNo').style.display = 'block';
+                    } else {
+                        document.getElementById('successYes').style.display = 'block';
+                    }
                 } else {
-                    document.getElementById('successYes').style.display = 'block';
+                    throw new Error();
                 }
-            } else {
-                throw new Error();
-            }
-        })
-        .catch(() => {
-            alert('Ошибка при отправке. Попробуйте еще раз.');
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = "Отправить";
-        });
+            })
+            .catch(() => {
+                alert('Ошибка при отправке. Попробуйте еще раз.');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = "Отправить";
+            });
     });
 });
